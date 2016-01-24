@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  floor_level: 1
+  slot_no: 1
+  distance: 1.5
+  is_allocated: false
+
+two:
+  floor_level: 1
+  slot_no: 1
+  distance: 1.5
+  is_allocated: false

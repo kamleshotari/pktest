@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  parking_lot_id: 1
+  reg_no: MyString
+  color: MyString
+  is_parked: false
+  in_time: 2016-01-24 12:25:46
+  out_time: 2016-01-24 12:25:46
+  ticket: MyString
+
+two:
+  parking_lot_id: 1
+  reg_no: MyString
+  color: MyString
+  is_parked: false
+  in_time: 2016-01-24 12:25:46
+  out_time: 2016-01-24 12:25:46
+  ticket: MyString

@@ -1,0 +1,27 @@
+= form_for @parking_lot, html: { class: "form-horizontal", role: "form" } do |f|
+  -if @parking_lot.errors.any?
+    .alert.alert-danger.alert-dismissable{role: "alert"}
+      %button.close{type: "button", data: {dismiss: "alert"} }
+        %span{aria: {hidden: "true"} } &times;
+        %span.sr-only Close
+      %h4= "#{pluralize(@parking_lot.errors.count, "error")} prohibited this category from being saved:"
+
+      %ul
+        - @parking_lot.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :floor_level, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :floor_level, class: 'form-control'
+  .form-group
+    = f.label :slot_no, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :slot_no, class: 'form-control'
+  .form-group
+    = f.label :distance_from_entry, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :distance, class: 'form-control'
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit class: 'btn btn-primary'

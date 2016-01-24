@@ -1,0 +1,34 @@
+.page-header
+  = link_to new_parking_detail_path, class: 'btn btn-primary' do
+    %span.glyphicon.glyphicon-plus
+    New Parking detail
+  %h1 Listing parking_details
+
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Parking lot
+        %th Reg no
+        %th Color
+        %th Is parked
+        %th In time
+        %th Out time
+        %th Ticket
+        %th
+        %th
+        %th
+
+    %tbody
+      - @parking_details.each do |parking_detail|
+        %tr
+          %td= parking_detail.parking_lot_id
+          %td= parking_detail.reg_no
+          %td= parking_detail.color
+          %td= parking_detail.is_parked
+          %td= parking_detail.in_time
+          %td= parking_detail.out_time
+          %td= parking_detail.ticket
+          %td= link_to 'Show', parking_detail
+          %td= link_to 'Edit', edit_parking_detail_path(parking_detail)
+          %td= link_to 'Destroy', parking_detail, data: { confirm: 'Are you sure?' }, method: :delete

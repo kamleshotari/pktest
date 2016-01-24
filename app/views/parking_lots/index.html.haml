@@ -1,0 +1,34 @@
+.page-header
+  %a{:href => new_parking_lot_url, class: 'btn btn-primary f-right MarTop25'}
+    %span.glyphicon.glyphicon-plus
+    New Parking Lot
+  %h1.f-left Parking lot details
+  .clear
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Floor
+        %th Slot No
+        %th Distance from Entry
+        %th Allocated
+      - @parking_lots.each do |p|
+        %tr
+          %td
+            = p.floor_level
+          %td
+            = p.slot_no
+          %td
+            = p.distance
+          %td
+            - if p.is_allocated
+
+              %span.label.label-success Yes
+            - else
+              %span.label.label-danger
+                No
+
+
+
+    %tbody
+      
