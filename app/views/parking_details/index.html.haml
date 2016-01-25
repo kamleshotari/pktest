@@ -4,7 +4,12 @@
     New Booking
   %h1.f-left Parking Details
   .clear
-
+  = form_tag "/parking_details", :method => "get", :class => "right search-frm" do
+    .input-group
+      = text_field_tag "s", "", :class => "form-control", :placeholder => "Search for..."
+      %span.input-group-btn
+        %button.btn.btn-default{:type => "submit"} Go!
+  .clear
 .table-responsive#parking-Dtail-table
   = render "parking_detail_list"
 

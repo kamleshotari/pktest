@@ -30,6 +30,11 @@
     = f.label "pk_lots", class: 'col-sm-2 control-label'
     .col-sm-10
       = f.text_field :pk_lots, class: 'form-control'
+      %i 
+        You can create parking lot using command.
+        %br
+        E.g.: create_parking_lot 6
+
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit class: 'btn btn-primary'

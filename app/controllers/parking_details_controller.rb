@@ -74,7 +74,10 @@ class ParkingDetailsController < ApplicationController
     @parking_details = ParkingDetail.all
     if @parking_detail.present?
       respond_to do |format|
-        if @parking_detail.update(:is_parked => false, :out_time => Time.now)
+        if @parking_detail.update_attributes(:is_parked => false, :out_time => Time.now)
+          format.js
+        else
+          p @parking_detail.errors
           format.js
         end
       end

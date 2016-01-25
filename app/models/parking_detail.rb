@@ -6,7 +6,8 @@ class ParkingDetail < ActiveRecord::Base
 
   validates :reg_no, :presence => true,
   			:format => {:with => /[A-Z]{2}[-][0-9]{2}[-][A-Z]{2}[-][0-9]{4}/i ,
-  			:message => "Please enter valid registration no."}
+  			:message => "is invalid"}
+
   validates :color, :presence => true
 
   validates :ticket, :presence => true,
@@ -14,10 +15,20 @@ class ParkingDetail < ActiveRecord::Base
 
   validates :parking_lot_id, :presence => true
 
-  
+  validate :validate_is_reg_no_already_present_or_not
+
   before_validation :assign_slot_for_parking, :on => :create
   after_save :set_allocation, :de_allocation
 
+
+  def validate_is_reg_no_already_present_or_not
+    if self.reg_no.present? && self.is_parked == true
+      p = ParkingDetail.where('reg_no =? and is_parked = ?', self.reg_no, true).last
+      if p.present?
+        self.errors.add(:reg_no, "already book the parking.")
+      end
+    end
+  end
   
   def assign_slot_for_parking
   	slot = ParkingLot.get_available_slot

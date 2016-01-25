@@ -27,7 +27,6 @@
               %a{href: new_parking_detail_url} Parking Booking
           
             
-    
     .container
       - flash.each do |name, msg|
         = content_tag :div, class: "alert alert-#{name == :error ? "danger" : "success" } alert-dismissable", role: "alert" do

@@ -28,6 +28,10 @@
     = f.label "Parking Detail", class: 'col-sm-2 control-label'
     .col-sm-10
       = f.text_field :pk_detail, class: 'form-control'
+      %i 
+        You can book parking using command.
+        %br
+        E.g.: park KA-01-HH-9999 White
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.submit "Book Now!", class: 'btn btn-primary'
