@@ -25,14 +25,20 @@ class ParkingLotsController < ApplicationController
   # POST /parking_lots.json
   def create
     @parking_lot = ParkingLot.new(parking_lot_params)
-
-    respond_to do |format|
-      if @parking_lot.save
-        format.html { redirect_to @parking_lot, notice: 'Parking lot was successfully created.' }
-        format.json { render :show, status: :created, location: @parking_lot }
-      else
-        format.html { render :new }
-        format.json { render json: @parking_lot.errors, status: :unprocessable_entity }
+    if params[:parking_lot][:pk_lots].present?
+      ParkingLot.create_parking_lot_using_command(params)
+      respond_to do |format|
+        format.html { redirect_to parking_lots_url, notice: 'Created a parking lot with #{params[:parking_lot][:pk_lots].split(' ').last} slots' }
+      end
+    else
+      respond_to do |format|
+        if @parking_lot.save
+          format.html { redirect_to @parking_lot, notice: 'Parking lot was successfully created.' }
+          format.json { render :show, status: :created, location: @parking_lot }
+        else
+          format.html { render :new }
+          format.json { render json: @parking_lot.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -69,6 +75,6 @@ class ParkingLotsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def parking_lot_params
-      params.require(:parking_lot).permit(:floor_level, :slot_no, :distance, :is_allocated)
+      params.require(:parking_lot).permit(:floor_level, :slot_no, :distance, :is_allocated, :pk_lots)
     end
 end

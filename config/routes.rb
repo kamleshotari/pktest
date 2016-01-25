@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  resources :parking_details
+
+  resources :parking_details do 
+    member do
+      get "return_parking_ticket"
+    end
+  end
   resources :parking_lots
-  resources :parking_lots
+
 
   root "parking_details#index"
   # The priority is based upon order of creation: first created -> highest priority.

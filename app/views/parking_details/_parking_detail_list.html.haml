@@ -1,0 +1,33 @@
+%table.table.table-striped.table-bordered.table-hover
+  %thead
+    %tr
+      %th Slot No.
+      %th Reg. No.
+      %th Colour
+      %th In-time
+      %th Out-time
+      %th Ticket
+      %th Is Parked
+      
+
+  %tbody
+    - if @parking_details.present?
+      - @parking_details.each do |parking_detail|
+        %tr
+          %td= parking_detail.parking_lot_id
+          %td= parking_detail.reg_no
+          %td= parking_detail.color
+          %td= parking_detail.in_time
+          %td= parking_detail.out_time
+          %td= parking_detail.ticket
+          %td
+            - if parking_detail.is_parked == true
+              %span.label.label-success Yes
+              = link_to "Click to Return Ticket", return_parking_ticket_parking_detail_url(:id => parking_detail.id), :class => "label label-danger", :remote => true
+            - else
+              %span.label.label-danger No
+    - else
+      %tr
+        %td{:colspan => "7"}
+          %center
+            Not found

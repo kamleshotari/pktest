@@ -12,6 +12,8 @@ class ParkingDetail < ActiveRecord::Base
   validates :ticket, :presence => true,
   					:uniqueness => true
 
+  validates :parking_lot_id, :presence => true
+
   
   before_validation :assign_slot_for_parking, :on => :create
   after_save :set_allocation, :de_allocation
@@ -43,8 +45,33 @@ class ParkingDetail < ActiveRecord::Base
   	(Time.now.to_f.round(3)*1000).to_i.to_s
   end
 
-  def book_parking_using_command(params)
+  def self.book_parking_using_command(params)
+    if params[:parking_detail][:pk_detail].present?
+      parking_detail = params[:parking_detail][:pk_detail].split(" ")
+      if parking_detail.count == 3 && parking_detail[0] == "park"
+        return parking_detail
+      else
+        return nil
+      end
+    end
+  end
 
+
+  def self.search(params)
+    if params[:s].present?
+      search_option = params[:s].split(" ")
+      case search_option[0]
+      when "registration_numbers_for_cars_with_colour"
+        parking_details = ParkingDetail.where('color = ?', search_option[1])
+      when "slot_numbers_for_cars_with_colour"
+        parking_details = ParkingDetail.where('color = ?', search_option[1])
+      when "slot_number_for_registration_number"
+        parking_details = ParkingDetail.where('reg_no = ?', search_option[1])
+      else
+        parking_details = nil
+      end
+      parking_details      
+    end
   end
 
 end
