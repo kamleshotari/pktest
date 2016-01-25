@@ -6,9 +6,11 @@
   .clear
   = form_tag "/parking_details", :method => "get", :class => "right search-frm" do
     .input-group
-      = text_field_tag "s", "", :class => "form-control", :placeholder => "Search for..."
+      = text_field_tag "s", params[:s].present? ? params[:s] : "", :class => "form-control", :placeholder => "Search for..."
       %span.input-group-btn
         %button.btn.btn-default{:type => "submit"} Go!
+      %span.input-group-btn
+        = link_to "Reset", parking_details_url, :class => "btn btn-default" 
   .clear
 .table-responsive#parking-Dtail-table
   = render "parking_detail_list"

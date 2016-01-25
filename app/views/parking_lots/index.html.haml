@@ -12,6 +12,7 @@
         %th Slot No
         %th Distance from Entry
         %th Allocated
+    %tbody
       - @parking_lots.each do |p|
         %tr
           %td
@@ -22,13 +23,8 @@
             = p.distance
           %td
             - if p.is_allocated
-
               %span.label.label-success Yes
             - else
               %span.label.label-danger
                 No
-
-
-
-    %tbody
       
