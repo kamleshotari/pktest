@@ -26,6 +26,8 @@ class ParkingDetail < ActiveRecord::Base
   		self.is_parked = true
   		self.ticket = self.generate_ticket
   		self.in_time = Time.now
+    else
+      self.errors.add(:base, "Sorry, parking lot is full")
   	end
   end
 
