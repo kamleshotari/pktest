@@ -14,11 +14,11 @@
     - if @parking_details.present?
       - @parking_details.each do |parking_detail|
         %tr
-          %td= parking_detail.parking_lot_id
+          %td= parking_detail.parking_lot.slot_no
           %td= parking_detail.reg_no
           %td= parking_detail.color
-          %td= parking_detail.in_time
-          %td= parking_detail.out_time
+          %td= parking_detail.in_time.strftime("%d/%m/%Y %I:%M %p") rescue ""
+          %td= parking_detail.out_time.strftime("%d/%m/%Y %I:%M %p") rescue ""
           %td= parking_detail.ticket
           %td
             - if parking_detail.is_parked == true

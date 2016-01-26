@@ -1,16 +1,14 @@
 .page-header
-  = link_to parking_details_path, class: 'btn btn-default' do
+  = link_to parking_details_path, class: 'btn btn-default  f-right MarTop25' do
     %span.glyphicon.glyphicon-list-alt
     Back
-  = link_to edit_parking_detail_path(@parking_detail), class: 'btn btn-primary' do
-    %span.glyphicon.glyphicon-pencil
-    Edit
-  %h1 Show parking_detail
-
+  
+  %h1.f-left Show parking_detail
+  .clear
 %dl.dl-horizontal
-  %dt Parking lot:
-  %dd= @parking_detail.parking_lot_id
-  %dt Reg no:
+  %dt Slot No.:
+  %dd= @parking_detail.parking_lot.slot_no
+  %dt Reg. No.:
   %dd= @parking_detail.reg_no
   %dt Color:
   %dd= @parking_detail.color

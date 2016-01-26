@@ -62,5 +62,6 @@
     float:right;
 }
 
-.search-frm{width: 300px}
-
+.search-frm{width: 300px;}
+a.logo-link img{height:50px;}
+.container .alert{margin-top: 52px;}

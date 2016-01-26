@@ -17,7 +17,8 @@
     %nav.navbar.navbar-inverse.navbar-fixed-top{role: "navigation"}
       .container
         .navbar-header
-          = link_to "<img src='/assets/logo1.png' style='height:50px'></img>".html_safe, "/"
+          = link_to root_url, :class => "logo-link" do
+            = image_tag("logo1.png")
           .H-spacing-160
         #navbar.collapse.navbar-collapse
           %ul.nav.navbar-nav
@@ -25,8 +26,7 @@
               %a{href: parking_lots_url} Parking Lot
             %li{:class => params[:controller] == "parking_details" ? "active" : "" }
               %a{href: new_parking_detail_url} Parking Booking
-          
-            
+                 
     .container
       - flash.each do |name, msg|
         = content_tag :div, class: "alert alert-#{name == :error ? "danger" : "success" } alert-dismissable", role: "alert" do

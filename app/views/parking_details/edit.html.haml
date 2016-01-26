@@ -1,10 +1,8 @@
 .page-header
-  = link_to parking_details_path, class: 'btn btn-default' do
+  = link_to parking_details_path, class: 'btn btn-default f-right MarTop25' do
     %span.glyphicon.glyphicon-list-alt
     Back
-  = link_to @parking_detail, class: 'btn btn-primary' do
-    %span.glyphicon.glyphicon-info-sign
-    Show
-  %h1 Editing parking_detail
-
+ 
+  %h1.f-left Editing parking_detail
+  .clear
 = render 'form'

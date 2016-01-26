@@ -28,7 +28,7 @@ class ParkingLotsController < ApplicationController
     if params[:parking_lot][:pk_lots].present?
       ParkingLot.create_parking_lot_using_command(params)
       respond_to do |format|
-        format.html { redirect_to parking_lots_url, notice: 'Created a parking lot with #{params[:parking_lot][:pk_lots].split(' ').last} slots' }
+        format.html { redirect_to parking_lots_url, notice: "Created a parking lot with #{params[:parking_lot][:pk_lots].split(' ').last} slots" }
       end
     else
       respond_to do |format|

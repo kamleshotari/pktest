@@ -38,7 +38,7 @@ class ParkingDetailsController < ApplicationController
     end
     respond_to do |format|
       if @parking_detail.save
-        format.html { redirect_to @parking_detail, notice: 'Parking detail was successfully created.' }
+        format.html { redirect_to @parking_detail, notice: "Allocated slot number: #{@parking_detail.parking_lot.slot_no}" }
         format.json { render :show, status: :created, location: @parking_detail }
       else
         format.html { render :new }
