@@ -14,8 +14,9 @@ production: *development
 ```
 Run `rake db:create db:migrate`.
 
+```
 
-### Header Links
+## Header Links
 
 ```
 Parking Lot link for listing parking lot details.
