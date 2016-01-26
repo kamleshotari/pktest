@@ -20,7 +20,7 @@ Run `rake db:create db:migrate`.
 
 ```
 Parking Lot link for listing parking lot details.
-In same page `+ New Parking Lot` link present to create new parking lot.
+In same page *+ New Parking Lot* link present to create new parking lot.
 
 ```
 ```
@@ -32,8 +32,8 @@ Only Basic validations are added to create parking lot.
 
 ```
 Parking Booking link for book new parking.
-On same page `Back` link is present for list Booking histroy.
-On Booking history page `Click to Return Ticket` link is present. 
+On same page *Back* link is present for list Booking histroy.
+On Booking history page *Click to Return Ticket* link is present. 
 This link is for return ticket to release the slot.
 
 ```
